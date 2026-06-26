@@ -1,0 +1,47 @@
+.root {
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 5px;
+}
+
+.header-container {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding-bottom: 15px;
+ margin-bottom: 15px;
+ border-bottom: 5px solid var(--secondary_color);
+}
+.header-container h1 {
+ font-size: 2.2rem;
+ font-weight: 300;
+}
+
+.balance-container {
+    text-align: right;
+}
+
+.balance-title{
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.balance-amount {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary_color);
+}
+
+.information-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.information-container p {
+    font-size: 1rem;
+    font-weight: 700;
+}
