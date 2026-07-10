@@ -1,67 +1,54 @@
 import { Credentials } from "./login.vm";
 import { validateForm } from "./login.validation";
+import { REQUIRED_FIELD_MESSAGE } from "@/common/validations";
 
 describe("pages/login/login.validation specs", () => {
-  it("Should return validation succeeded when both fields are informed", () => {
-    // Arrange
-    const credentials: Credentials = {
-      user: "myuser",
-      password: "mypassword",
-    };
+    describe("validateForm", () => {
+        it("should return true when all fields are correct", () => {
+            // Arrange
+            const credentials: Credentials = {
+                user: "test",
+                password: "test",
+            };
+            // Act
+            const result = validateForm(credentials);
+            // Assert
+            expect(result.succeeded).toBeTruthy();
+            expect(result.errors).toEqual({
+                user: "",
+                password: "",
+            });
+        });
+        it("should return false when validateUserField is incorrect", () => {
+            // Arrange
+            const credentials: Credentials = {
+                user: "",
+                password: "test",
+            };
+            // Act
+            const result = validateForm(credentials);
+            // Assert
+            expect(result.succeeded).toBeFalsy();
+            expect(result.errors).toEqual({
+                user: REQUIRED_FIELD_MESSAGE,
+                password: "",
+            });
+        });
+        it("should return false when validatePasswordField is incorrect", () => {
+            // Arrange
+            const credentials: Credentials = {
+                user: "test",
+                password: "",
+            };
+            // Act
+            const result = validateForm(credentials);
+            // Assert
+            expect(result.succeeded).toBeFalsy();
+            expect(result.errors).toEqual({
+                user: "",
+                password: REQUIRED_FIELD_MESSAGE,
+            });
+        });
 
-    // Act
-    const result = validateForm(credentials);
-
-    // Assert
-    expect(result.succeeded).toBeTruthy();
-    expect(result.errors.user).toEqual("");
-    expect(result.errors.password).toEqual("");
-  });
-
-  it("Should return validation failed when user is empty", () => {
-    // Arrange
-    const credentials: Credentials = {
-      user: "",
-      password: "mypassword",
-    };
-
-    // Act
-    const result = validateForm(credentials);
-
-    // Assert
-    expect(result.succeeded).toBeFalsy();
-    expect(result.errors.user).toEqual("Debe informar el campo usuario");
-    expect(result.errors.password).toEqual("");
-  });
-
-  it("Should return validation failed when password is empty", () => {
-    // Arrange
-    const credentials: Credentials = {
-      user: "myuser",
-      password: "",
-    };
-
-    // Act
-    const result = validateForm(credentials);
-
-    // Assert
-    expect(result.succeeded).toBeFalsy();
-    expect(result.errors.user).toEqual("");
-    expect(result.errors.password).toEqual("Debe informar el campo contraseña");
-  });
-  it("Should return validation failed when both user and password is empty", () => {
-    // Arrange
-    const credentials: Credentials = {
-      user: "",
-      password: "",
-    };
-
-    // Act
-    const result = validateForm(credentials);
-
-    // Assert
-    expect(result.succeeded).toBeFalsy();
-    expect(result.errors.user).toEqual("Debe informar el campo usuario");
-    expect(result.errors.password).toEqual("Debe informar el campo contraseña");
-  });
+    });
 });

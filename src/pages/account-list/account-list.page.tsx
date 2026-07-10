@@ -1,10 +1,12 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import { AppLayout } from "@/layouts";
 import { AccountVm } from "./account-list.vm";
 import classes from "./account-list.page.module.css";
 import { AccountListTableComponent } from "./components/account-list-table.component";
 import { getAccountList } from "./api";
 import { mapAccountListFromApiToVm } from "./account-list.mapper";
+import { appRoutes } from "@/core/router";
 
 export const AccountListPage: React.FC = () => {
   const [accountList, setAccountList] = React.useState<AccountVm[]>([]);
@@ -20,7 +22,9 @@ export const AccountListPage: React.FC = () => {
       <div className={classes.root}>
         <div className={classes.headerContainer}>
           <h1>Mis cuentas</h1>
-          <button>AGREGAR NUEVA CUENTA</button>
+          <button><Link to={appRoutes.createAccount}>
+        AGREGAR NUEVA CUENTA
+      </Link></button>
         </div>
         <AccountListTableComponent accountList={accountList} />
       </div>

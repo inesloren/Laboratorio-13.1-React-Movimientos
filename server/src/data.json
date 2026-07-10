@@ -23,6 +23,22 @@
       "name": "Ahorro",
       "balance": 8500,
       "lastTransaction": "2019-11-15T08:29:04"
+    },
+    {
+      "iban": "DK30 2096 0802 5700 43",
+      "name": "Salario",
+      "type": "1",
+      "balance": 0,
+      "lastTransaction": "2026-07-10T10:22:40.027Z",
+      "id": "55-W1bf"
+    },
+    {
+      "iban": "SI12 5258 4759 7080 073",
+      "name": "Inés ",
+      "type": "2",
+      "balance": 0,
+      "lastTransaction": "2026-07-10T10:25:01.940Z",
+      "id": "WVHTLZt"
     }
   ],
   "movements": [
@@ -108,5 +124,17 @@
       "accountId": "3"
     }
   ],
-  "transfer": []
+  "transfer": [
+    {
+      "accountId": "1",
+      "iban": "DK30 2096 0802 5700 43",
+      "name": "Inés ",
+      "amount": "300",
+      "concept": "test",
+      "notes": "test",
+      "transferDate": "Fri Jul 10 2026",
+      "realDateTransfer": "",
+      "id": 1
+    }
+  ]
 }
